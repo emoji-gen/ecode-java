@@ -1,0 +1,62 @@
+buildscript {
+    ext {
+        version = '0.1.0'
+        description = ''
+        group = 'ninja.emojigen'
+        websiteUrl = 'https://github.com/emoji-gen/ecode-java'
+        gitUrl = 'https://github.com/emoji-gen/ecode-java.git'
+        issueTrackerUrl = 'https://github.com/emoji-gen/ecode-java/issues'
+        userOrg = 'pinemz'
+    }
+    repositories {
+        jcenter()
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+        classpath 'net.rdrei.android.buildtimetracker:gradle-plugin:0.11.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+    }
+}
+
+
+// ----- Project ------------------------------------------
+
+apply plugin: 'java-library'
+apply plugin: 'idea'
+
+group rootProject.ext.group
+version rootProject.ext.version
+description rootProject.ext.description
+
+repositories {
+    jcenter()
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-Xlint:unchecked'
+    options.compilerArgs << '-Xlint:deprecation'
+}
+
+dependencies {
+    compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
+}
+
+
+// ----- Build Time Tracker -------------------------------
+
+apply plugin: 'build-time-tracker'
+
+buildtimetracker {
+    reporters {
+        summary {
+            ordered true
+            barstyle 'ascii'
+        }
+    }
+}
+
+
