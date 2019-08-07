@@ -5,7 +5,8 @@ import org.apache.commons.codec.binary.Base64;
 import java.nio.charset.StandardCharsets;
 
 public class EcodeEncoder {
-    protected static final int V1_HEADER_LENGTH = 11;
+    private static final int V1_HEADER_LENGTH = 11;
+    private static final int V1_FLAG_LENGTH = 6;
 
     public String encode(EcodeV1 ecode) {
         final byte[] encodedText = ecode.getText().getBytes(StandardCharsets.UTF_8);
@@ -14,7 +15,11 @@ public class EcodeEncoder {
         ecodeBytes[0] |= ecode.getLocale().getId();
 
         for (EcodeFlag flag : ecode.getFlags()) {
-            ecodeBytes[1] |= 0x80 >> flag.getId();
+            if (flag.getId() > V1_FLAG_LENGTH) {
+                throw new IllegalStateException(
+                    String.format("Illegal flag ID %d", flag.getId()));
+            }
+            ecodeBytes[1] |= 0x80 >>> flag.getId();
         }
 
         ecodeBytes[1] |= ecode.getTextAlign().ordinal();
