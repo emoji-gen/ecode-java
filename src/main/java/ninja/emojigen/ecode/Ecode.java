@@ -1,5 +1,5 @@
 package ninja.emojigen.ecode;
 
-abstract class Ecode {
-    abstract int getVersion();
+public abstract class Ecode {
+    public abstract int getVersion();
 }

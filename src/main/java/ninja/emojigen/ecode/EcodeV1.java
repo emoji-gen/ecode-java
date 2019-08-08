@@ -31,7 +31,7 @@ public class EcodeV1 extends Ecode {
     }
 
     @Override
-    int getVersion() {
+    public int getVersion() {
         return 1;
     }
 
