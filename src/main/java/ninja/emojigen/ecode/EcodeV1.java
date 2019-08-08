@@ -6,7 +6,8 @@ import java.util.Set;
 public class EcodeV1 extends Ecode {
     private final EcodeLocale locale;
     private final Set<EcodeFlag> flags;
-    private final EcodeTextAlign textAlign;
+    private final EcodeAlign textAlign;
+    private final EcodeSize size;
     private final int fontId;
     private final int foregroundColor;
     private final int backgroundColor;
@@ -15,7 +16,8 @@ public class EcodeV1 extends Ecode {
     public EcodeV1(
         final EcodeLocale locale,
         final Set<EcodeFlag> flags,
-        final EcodeTextAlign textAlign,
+        final EcodeAlign textAlign,
+        final EcodeSize size,
         final int fontId,
         final int foregroundColor,
         final int backgroundColor,
@@ -24,6 +26,7 @@ public class EcodeV1 extends Ecode {
         this.locale = locale;
         this.flags = Collections.unmodifiableSet(flags);
         this.textAlign = textAlign;
+        this.size = size;
         this.fontId = fontId;
         this.foregroundColor = foregroundColor;
         this.backgroundColor = backgroundColor;
@@ -43,8 +46,12 @@ public class EcodeV1 extends Ecode {
         return flags;
     }
 
-    public EcodeTextAlign getTextAlign() {
+    public EcodeAlign getTextAlign() {
         return textAlign;
+    }
+
+    public EcodeSize getSize() {
+        return size;
     }
 
     public int getFontId() {

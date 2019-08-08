@@ -36,5 +36,4 @@ public enum EcodeLocale {
     public static EcodeLocale fromId(final int id) {
         return ID_TO_LOCALE.get(id);
     }
-
 }

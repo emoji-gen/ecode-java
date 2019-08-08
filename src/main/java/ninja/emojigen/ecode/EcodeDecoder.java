@@ -48,7 +48,7 @@ public class EcodeDecoder {
         }
 
         final int alignId = ecodeBytes[1] & 0x03;
-        final EcodeTextAlign textAlign = EcodeTextAlign.fromId(alignId);
+        final EcodeAlign textAlign = EcodeAlign.fromId(alignId);
         if (textAlign == null) {
             throw new IllegalStateException(
                 String.format("Illegal text align ID %d.", alignId));

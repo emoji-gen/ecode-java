@@ -5,7 +5,7 @@ import java.util.Set;
 public class EcodeV1Builder {
     private EcodeLocale locale;
     private Set<EcodeFlag> flags;
-    private EcodeTextAlign textAlign;
+    private EcodeAlign textAlign;
     private int fontId;
 
     public EcodeV1Builder locale(final EcodeLocale locale) {
@@ -18,7 +18,7 @@ public class EcodeV1Builder {
         return this;
     }
 
-    public EcodeV1Builder textAlign(final EcodeTextAlign textAlign) {
+    public EcodeV1Builder textAlign(final EcodeAlign textAlign) {
         this.textAlign = textAlign;
         return this;
     }
