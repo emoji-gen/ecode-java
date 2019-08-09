@@ -44,7 +44,10 @@ compileJava {
 
 dependencies {
     api 'moe.pine:nonnull:0.1.0'
-    api 'commons-codec:commons-codec:1.13' // for Android support
+    api 'commons-codec:commons-codec:1.13'
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.28.2'
 }
 
 

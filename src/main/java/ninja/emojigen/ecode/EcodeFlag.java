@@ -21,6 +21,10 @@ public enum EcodeFlag {
         return id;
     }
 
+    int getMask() {
+        return 0b0000_0001 << id;
+    }
+
     private static Map<Integer, EcodeFlag> ID_TO_FLAG;
 
     static {

@@ -2,41 +2,38 @@ package ninja.emojigen.ecode;
 
 import org.apache.commons.codec.binary.Base64;
 
+import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
+import java.util.Set;
 
 public class EcodeEncoder {
     private static final int V1_HEADER_LENGTH = 12;
-    private static final int V1_FLAG_LENGTH = 6;
 
-    public String encode(EcodeV1 ecode) {
+    public String encode(final EcodeV1 ecode) {
         final byte[] encodedText = ecode.getText().getBytes(StandardCharsets.UTF_8);
-        final byte[] ecodeBytes = new byte[V1_HEADER_LENGTH + encodedText.length];
-
-        ecodeBytes[0] |= ecode.getLocale().getId() & 0x0f;
-
-        for (EcodeFlag flag : ecode.getFlags()) {
-            if (flag.getId() >= V1_FLAG_LENGTH) {
-                throw new IllegalStateException(
-                    String.format("Illegal flag ID %d", flag.getId()));
-            }
-            ecodeBytes[1] |= 0x80 >>> flag.getId();
+        if (encodedText.length == 0) {
+            throw new IllegalStateException("empty string is not allowed");
         }
 
-        ecodeBytes[1] |= ecode.getTextAlign().getId() & 0x03;
-        ecodeBytes[2] |= (ecode.getSize().getId() << 4) & 0xf0;
-        // FORMAT: 4
-        ecodeBytes[3] |= ecode.getFontId() & 0xff;
-        ecodeBytes[4] |= ecode.getForegroundColor() >>> 24 & 0xff;
-        ecodeBytes[5] |= ecode.getForegroundColor() >>> 16 & 0xff;
-        ecodeBytes[6] |= ecode.getForegroundColor() >>> 8 & 0xff;
-        ecodeBytes[7] |= ecode.getForegroundColor() & 0xff;
-        ecodeBytes[8] |= ecode.getBackgroundColor() >>> 24 & 0xff;
-        ecodeBytes[9] |= ecode.getBackgroundColor() >>> 16 & 0xff;
-        ecodeBytes[10] |= ecode.getBackgroundColor() >>> 8 & 0xff;
-        ecodeBytes[11] |= ecode.getBackgroundColor() & 0xff;
+        final ByteBuffer byteBuffer = ByteBuffer.allocate(V1_HEADER_LENGTH + encodedText.length);
+        byteBuffer.put((byte) (ecode.getLocale().getId() & 0x0f));
+        byteBuffer.put((byte) (
+            encodeFlagsV1(ecode.getFlags()) << 2 & 0b1111_1100 | ecode.getAlign().getId() & 0b0000_0011));
+        byteBuffer.put((byte) (ecode.getSize().getId() << 4 & 0xf0 | ecode.getFormat().getId() & 0x0f));
+        byteBuffer.put((byte) (ecode.getFontId() & 0xff));
+        byteBuffer.putInt(ecode.getForegroundColor());
+        byteBuffer.putInt(ecode.getBackgroundColor());
+        byteBuffer.put(encodedText);
 
-        System.arraycopy(encodedText, 0, ecodeBytes, V1_HEADER_LENGTH, encodedText.length);
+        return Base64.encodeBase64URLSafeString(byteBuffer.array());
+    }
 
-        return Base64.encodeBase64URLSafeString(ecodeBytes);
+    int encodeFlagsV1(final Set<EcodeFlag> flags) {
+        int mask = 0x00;
+        for (final EcodeFlag flag : flags) {
+            mask |= flag.getMask();
+        }
+
+        return mask;
     }
 }

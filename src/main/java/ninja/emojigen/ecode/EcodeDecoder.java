@@ -61,7 +61,7 @@ public class EcodeDecoder {
         return new EcodeV1Builder()
             .locale(locale)
             .flags(flags)
-            .textAlign(textAlign)
+            .align(textAlign)
             .fontId(fontId)
             .build();
     }

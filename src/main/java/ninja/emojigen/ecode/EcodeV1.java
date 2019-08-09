@@ -1,13 +1,15 @@
 package ninja.emojigen.ecode;
 
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Set;
 
 public class EcodeV1 extends Ecode {
     private final EcodeLocale locale;
     private final Set<EcodeFlag> flags;
-    private final EcodeAlign textAlign;
+    private final EcodeAlign align;
     private final EcodeSize size;
+    private final EcodeFormat format;
     private final int fontId;
     private final int foregroundColor;
     private final int backgroundColor;
@@ -16,21 +18,23 @@ public class EcodeV1 extends Ecode {
     public EcodeV1(
         final EcodeLocale locale,
         final Set<EcodeFlag> flags,
-        final EcodeAlign textAlign,
+        final EcodeAlign align,
         final EcodeSize size,
+        final EcodeFormat format,
         final int fontId,
         final int foregroundColor,
         final int backgroundColor,
         final String text
     ) {
-        this.locale = locale;
+        this.locale = Objects.requireNonNull(locale);
         this.flags = Collections.unmodifiableSet(flags);
-        this.textAlign = textAlign;
-        this.size = size;
+        this.align = Objects.requireNonNull(align);
+        this.size = Objects.requireNonNull(size);
+        this.format = Objects.requireNonNull(format);
         this.fontId = fontId;
         this.foregroundColor = foregroundColor;
         this.backgroundColor = backgroundColor;
-        this.text = text;
+        this.text = Objects.requireNonNull(text);
     }
 
     @Override
@@ -46,12 +50,16 @@ public class EcodeV1 extends Ecode {
         return flags;
     }
 
-    public EcodeAlign getTextAlign() {
-        return textAlign;
+    public EcodeAlign getAlign() {
+        return align;
     }
 
     public EcodeSize getSize() {
         return size;
+    }
+
+    public EcodeFormat getFormat() {
+        return format;
     }
 
     public int getFontId() {
