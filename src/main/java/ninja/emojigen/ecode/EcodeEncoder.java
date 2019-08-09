@@ -25,6 +25,8 @@ public class EcodeEncoder {
         byteBuffer.putInt(ecode.getBackgroundColor());
         byteBuffer.put(encodedText);
 
+        // I think `java.util.Base64` is great,
+        // but it not works on below Android 8.0 (API level 26) :(
         return Base64.encodeBase64URLSafeString(byteBuffer.array());
     }
 
