@@ -8,8 +8,7 @@ import java.util.EnumSet;
 import java.util.Set;
 
 public class EcodeDecoder {
-    private static final int V1_HEADER_LENGTH = 12;
-    private static final int V1_FLAG_LENGTH = 6;
+    protected static final int V1_HEADER_LENGTH = 12;
 
     public EcodeV1 decodeV1(String ecode) {
         final byte[] bytes = Base64.decodeBase64(ecode);
