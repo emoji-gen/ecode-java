@@ -26,7 +26,7 @@ public class EcodeDecoder {
         final int localeId = bytes[0] & 0x0f;
         final EcodeLocale locale = EcodeLocale.fromId(localeId);
         if (locale == null) {
-            throw new IllegalStateException(
+            throw new IllegalArgumentException(
                 String.format("Illegal locale ID %d.", localeId));
         }
 
@@ -40,7 +40,7 @@ public class EcodeDecoder {
         final int alignId = bytes[1] & 0x03;
         final EcodeAlign align = EcodeAlign.fromId(alignId);
         if (align == null) {
-            throw new IllegalStateException(
+            throw new IllegalArgumentException(
                 String.format("Illegal align ID %d.", alignId));
         }
 

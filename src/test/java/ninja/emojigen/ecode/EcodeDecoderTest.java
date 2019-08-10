@@ -51,4 +51,28 @@ public class EcodeDecoderTest {
         final String ecode = Base64.encodeBase64URLSafeString(bytes);
         ECODE_DECODER.decodeV1(ecode);
     }
+
+    @Test
+    public void decodeV1Test_illegalLocale() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("Illegal locale ID 15.");
+
+        final byte[] bytes = new byte[13];
+        bytes[0] |= 0x0f;
+
+        final String ecode = Base64.encodeBase64URLSafeString(bytes);
+        ECODE_DECODER.decodeV1(ecode);
+    }
+
+    @Test
+    public void decodeV1Test_illegalAlign() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("Illegal align ID 3.");
+
+        final byte[] bytes = new byte[13];
+        bytes[1] |= 0x03;
+
+        final String ecode = Base64.encodeBase64URLSafeString(bytes);
+        ECODE_DECODER.decodeV1(ecode);
+    }
 }
