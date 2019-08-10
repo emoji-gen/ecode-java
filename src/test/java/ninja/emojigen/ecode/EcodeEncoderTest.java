@@ -1,7 +1,9 @@
 package ninja.emojigen.ecode;
 
 import org.apache.commons.codec.binary.Base64;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.EnumSet;
 
@@ -11,6 +13,9 @@ import static org.junit.Assert.assertEquals;
 
 public class EcodeEncoderTest {
     private static final EcodeEncoder ECODE_ENCODER = new EcodeEncoder();
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void encodeV1Test() {
@@ -51,6 +56,15 @@ public class EcodeEncoderTest {
             };
 
         assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void encodeV1Test_empty() {
+        expectedException.expect(IllegalArgumentException.class);
+
+        new EcodeV1Builder()
+            .text("")
+            .build();
     }
 
     @Test
