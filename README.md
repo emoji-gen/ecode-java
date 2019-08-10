@@ -24,6 +24,7 @@ depepdencies {
 ```
 
 ## Usage
+### Encoding
 
 ```java
 import ninja.emojigen.ecode.*;
@@ -42,8 +43,21 @@ class Main {
             .text("ab\nc")
             .build();
 
-        final String code = new EcodeEncoder().encode(ecode);
+        final String code = new EcodeEncoder().encodeV1(ecode);
         System.out.println(code); // => "BA0hzxI0VniavN7wYWIKYw"
+    }
+}
+```
+
+## Decoding
+
+```java
+import ninja.emojigen.ecode.*;
+
+class Main {
+    public static void main(String ...args) {
+        final EcodeV1 ecode = new EcodeDecoder().decodeV1("BA0hzxI0VniavN7wYWIKYw");
+        System.out.println(ecode.getText()); // => "ab\nc"
     }
 }
 ```
