@@ -1,12 +1,18 @@
 package ninja.emojigen.ecode;
 
+import org.apache.commons.codec.binary.Base64;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.EnumSet;
 
 import static org.junit.Assert.assertEquals;
 
 public class EcodeDecoderTest {
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
     private static final EcodeDecoder ECODE_DECODER = new EcodeDecoder();
 
     @Test
@@ -22,5 +28,27 @@ public class EcodeDecoderTest {
         assertEquals(0x12345678, ecodeV1.getForegroundColor());
         assertEquals(0x9abcdef0, ecodeV1.getBackgroundColor());
         assertEquals("ab\nc", ecodeV1.getText());
+    }
+
+    @Test
+    public void decodeV1Test_illegalLength() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("Illegal byte length 12.");
+
+        final byte[] bytes = new byte[12];
+        final String ecode = Base64.encodeBase64URLSafeString(bytes);
+        ECODE_DECODER.decodeV1(ecode);
+    }
+
+    @Test
+    public void decodeV1Test_illegalVersion() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("Illegal ecode version 16.");
+
+        final byte[] bytes = new byte[13];
+        bytes[0] |= 0xf0;
+
+        final String ecode = Base64.encodeBase64URLSafeString(bytes);
+        ECODE_DECODER.decodeV1(ecode);
     }
 }

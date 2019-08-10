@@ -13,14 +13,14 @@ public class EcodeDecoder {
     public EcodeV1 decodeV1(String ecode) {
         final byte[] bytes = Base64.decodeBase64(ecode);
         if (bytes.length <= V1_HEADER_LENGTH) {
-            throw new IllegalStateException(
+            throw new IllegalArgumentException(
                 String.format("Illegal byte length %d.", bytes.length));
         }
 
-        final int version = bytes[0] >>> 4 & 0x0f;
-        if (version != 0) {
+        final int version = (bytes[0] >>> 4 & 0x0f) + 1;
+        if (version != 1) {
             throw new IllegalArgumentException(
-                String.format("Ecode version %d is not supported.", version));
+                String.format("Illegal ecode version %d.", version));
         }
 
         final int localeId = bytes[0] & 0x0f;

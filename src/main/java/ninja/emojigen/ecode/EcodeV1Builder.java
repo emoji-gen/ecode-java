@@ -56,7 +56,11 @@ public class EcodeV1Builder {
     }
 
     public EcodeV1Builder text(final String text) {
-        this.text = Objects.requireNonNull(text);
+        if (text.isEmpty()) { // implicit NPE
+            throw new IllegalArgumentException("empty string is not allowed");
+        }
+
+        this.text = text;
         return this;
     }
 
