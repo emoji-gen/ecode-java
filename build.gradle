@@ -4,7 +4,7 @@ buildscript {
         description = ''
         group = 'ninja.emojigen'
         websiteUrl = 'https://github.com/emoji-gen/ecode-java'
-        gitUrl = 'https://github.com/emoji-gen/ecode-java.git'
+        vcsUrl = 'https://github.com/emoji-gen/ecode-java.git'
         issueTrackerUrl = 'https://github.com/emoji-gen/ecode-java/issues'
         userOrg = 'pinemz'
     }
