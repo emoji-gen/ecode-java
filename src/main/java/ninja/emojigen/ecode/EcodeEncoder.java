@@ -9,7 +9,7 @@ import java.util.Set;
 public class EcodeEncoder {
     private static final int V1_HEADER_LENGTH = 12;
 
-    public String encode(final EcodeV1 ecode) {
+    public String encodeV1(final EcodeV1 ecode) {
         final byte[] encodedText = ecode.getText().getBytes(StandardCharsets.UTF_8);
         if (encodedText.length == 0) {
             throw new IllegalStateException("empty string is not allowed");

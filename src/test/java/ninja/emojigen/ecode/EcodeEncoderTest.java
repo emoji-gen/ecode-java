@@ -13,7 +13,7 @@ public class EcodeEncoderTest {
     private static final EcodeEncoder ECODE_ENCODER = new EcodeEncoder();
 
     @Test
-    public void encodeTest() {
+    public void encodeV1Test() {
         final EcodeV1 ecode = new EcodeV1Builder()
             .locale(EcodeLocale.EN)
             .flags(EnumSet.of(EcodeFlag.SIZE_FIXED, EcodeFlag.STRETCH))
@@ -26,7 +26,9 @@ public class EcodeEncoderTest {
             .text("ab\nc")
             .build();
 
-        final String code = ECODE_ENCODER.encode(ecode);
+        final String code = ECODE_ENCODER.encodeV1(ecode);
+        System.out.println("code=" + code); // "BA0hzxI0VniavN7wYWIKYw"
+
         final byte[] actual = Base64.decodeBase64(code);
         final byte[] expected =
             new byte[]{
