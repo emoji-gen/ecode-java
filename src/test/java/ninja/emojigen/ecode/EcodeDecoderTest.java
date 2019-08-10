@@ -10,8 +10,9 @@ public class EcodeDecoderTest {
     private static final EcodeDecoder ECODE_DECODER = new EcodeDecoder();
 
     @Test
-    public void decodeTest() {
+    public void decodeV1Test() {
         final EcodeV1 ecodeV1 = ECODE_DECODER.decodeV1("BA0hzxI0VniavN7wYWIKYw");
+        assertEquals(1, ecodeV1.getVersion());
         assertEquals(EcodeLocale.EN, ecodeV1.getLocale());
         assertEquals(EnumSet.of(EcodeFlag.SIZE_FIXED, EcodeFlag.STRETCH), ecodeV1.getFlags());
         assertEquals(EcodeAlign.CENTER, ecodeV1.getAlign());
