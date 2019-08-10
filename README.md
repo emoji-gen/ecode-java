@@ -1,4 +1,6 @@
 # ecode-java
+[![codecov](https://codecov.io/gh/emoji-gen/ecode-java/branch/master/graph/badge.svg)](https://codecov.io/gh/emoji-gen/ecode-java)
+
 > :musical_score: The emoji code utilities for Java
 
 ## Requirements
