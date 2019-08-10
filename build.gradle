@@ -7,6 +7,8 @@ buildscript {
         vcsUrl = 'https://github.com/emoji-gen/ecode-java.git'
         issueTrackerUrl = 'https://github.com/emoji-gen/ecode-java/issues'
         userOrg = 'pinemz'
+
+        powermockVersion = '2.0.2'
     }
     repositories {
         jcenter()
@@ -48,6 +50,7 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:2.28.2'
+    testImplementation "org.powermock:powermock-reflect:$powermockVersion"
 }
 
 

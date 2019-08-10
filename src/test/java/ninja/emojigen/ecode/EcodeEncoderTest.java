@@ -62,9 +62,11 @@ public class EcodeEncoderTest {
     public void encodeV1Test_empty() {
         expectedException.expect(IllegalArgumentException.class);
 
-        new EcodeV1Builder()
-            .text("")
+        final EcodeV1 ecode = new EcodeV1Builder()
+            .text("ab\nc")
             .build();
+
+
     }
 
     @Test
