@@ -75,4 +75,28 @@ public class EcodeDecoderTest {
         final String ecode = Base64.encodeBase64URLSafeString(bytes);
         ECODE_DECODER.decodeV1(ecode);
     }
+
+    @Test
+    public void decodeV1Test_illegalSize() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("Illegal size ID 15.");
+
+        final byte[] bytes = new byte[13];
+        bytes[2] |= 0xf0;
+
+        final String ecode = Base64.encodeBase64URLSafeString(bytes);
+        ECODE_DECODER.decodeV1(ecode);
+    }
+
+    @Test
+    public void decodeV1Test_illegalFormat() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("Illegal format ID 15.");
+
+        final byte[] bytes = new byte[13];
+        bytes[2] |= 0x0f;
+
+        final String ecode = Base64.encodeBase64URLSafeString(bytes);
+        ECODE_DECODER.decodeV1(ecode);
+    }
 }

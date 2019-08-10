@@ -47,14 +47,14 @@ public class EcodeDecoder {
         final int sizeId = bytes[2] >>> 4 & 0x0f;
         final EcodeSize size = EcodeSize.fromId(sizeId);
         if (size == null) {
-            throw new IllegalStateException(
+            throw new IllegalArgumentException(
                 String.format("Illegal size ID %d.", sizeId));
         }
 
         final int formatId = bytes[2] & 0x0f;
         final EcodeFormat format = EcodeFormat.fromId(formatId);
         if (format == null) {
-            throw new IllegalStateException(
+            throw new IllegalArgumentException(
                 String.format("Illegal format ID %d.", formatId));
         }
 
