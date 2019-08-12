@@ -1,6 +1,7 @@
 # ecode-java
 [![Build Status](https://travis-ci.com/emoji-gen/ecode-java.svg?branch=master)](https://travis-ci.com/emoji-gen/ecode-java)
 [![codecov](https://codecov.io/gh/emoji-gen/ecode-java/branch/master/graph/badge.svg)](https://codecov.io/gh/emoji-gen/ecode-java)
+[![Download](https://api.bintray.com/packages/pinemz/maven/ecode/images/download.svg)](https://bintray.com/pinemz/maven/ecode)
 
 > :musical_score: The emoji code utilities for Java
 
