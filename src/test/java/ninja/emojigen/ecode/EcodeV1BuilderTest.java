@@ -20,4 +20,11 @@ public class EcodeV1BuilderTest {
         expectedException.expect(IllegalArgumentException.class);
         new EcodeV1Builder().text("");
     }
+
+    @Test
+    public void buildTest_nullText() {
+        expectedException.expect(IllegalStateException.class);
+        expectedException.expectMessage("`text` is required");
+        new EcodeV1Builder().build();
+    }
 }

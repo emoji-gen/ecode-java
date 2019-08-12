@@ -1,5 +1,7 @@
 package ninja.emojigen.ecode;
 
+import moe.pine.nonnull.Nullable;
+
 import java.util.EnumSet;
 import java.util.Objects;
 import java.util.Set;
@@ -11,8 +13,10 @@ public class EcodeV1Builder {
     private EcodeSize size = EcodeSize.MDPI;
     private EcodeFormat format = EcodeFormat.PNG;
     private int fontId;
-    private int foregroundColor;
-    private int backgroundColor;
+    private int foregroundColor = 0x000000FF;
+    private int backgroundColor = 0xFFFFFFFF;
+
+    @Nullable
     private String text;
 
     public EcodeV1Builder locale(final EcodeLocale locale) {
@@ -65,6 +69,10 @@ public class EcodeV1Builder {
     }
 
     public EcodeV1 build() {
+        if (text == null) {
+            throw new IllegalStateException("`text` is required");
+        }
+
         return new EcodeV1(
             locale,
             flags,
