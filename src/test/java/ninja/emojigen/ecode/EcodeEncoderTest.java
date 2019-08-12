@@ -4,6 +4,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.powermock.reflect.Whitebox;
 
 import java.util.EnumSet;
 
@@ -61,12 +62,14 @@ public class EcodeEncoderTest {
     @Test
     public void encodeV1Test_empty() {
         expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("empty string is not allowed");
 
         final EcodeV1 ecode = new EcodeV1Builder()
             .text("ab\nc")
             .build();
+        Whitebox.setInternalState(ecode, "text", "");
 
-
+        ECODE_ENCODER.encodeV1(ecode);
     }
 
     @Test

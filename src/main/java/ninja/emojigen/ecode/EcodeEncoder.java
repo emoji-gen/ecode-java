@@ -12,7 +12,7 @@ public class EcodeEncoder {
     public String encodeV1(final EcodeV1 ecode) {
         final byte[] encodedText = ecode.getText().getBytes(StandardCharsets.UTF_8);
         if (encodedText.length == 0) {
-            throw new IllegalStateException("empty string is not allowed");
+            throw new IllegalArgumentException("empty string is not allowed");
         }
 
         final ByteBuffer byteBuffer = ByteBuffer.allocate(V1_HEADER_LENGTH + encodedText.length);
