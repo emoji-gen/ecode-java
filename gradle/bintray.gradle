@@ -14,6 +14,7 @@ bintray {
         name = project.name
         desc = project.description
         licenses = ['MIT']
+        websiteUrl = rootProject.ext.websiteUrl
         vcsUrl = rootProject.ext.vcsUrl
         publicDownloadNumbers = true
 
@@ -29,7 +30,7 @@ install {
         pom {
             project {
                 name project.name
-                url rootProject.ext.siteUrl
+                url rootProject.ext.websiteUrl
                 licenses {
                     license {
                         name 'MIT License'
@@ -46,7 +47,7 @@ install {
                 scm {
                     connection rootProject.ext.vcsUrl
                     developerConnection rootProject.ext.vcsUrl
-                    url rootProject.ext.siteUrl
+                    url rootProject.ext.websiteUrl
                 }
             }
         }
