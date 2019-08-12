@@ -9,6 +9,8 @@ buildscript {
         vcsUrl = 'https://github.com/emoji-gen/ecode-java.git'
         githubRepo = 'emoji-gen/ecode-java'
 
+        junitVersion = '4.12'
+        mockitoVersion = '2.28.2'
         powermockVersion = '2.0.2'
     }
     repositories {
@@ -49,8 +51,8 @@ dependencies {
     api 'moe.pine:nonnull:0.1.0'
     api 'commons-codec:commons-codec:1.13'
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:2.28.2'
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
     testImplementation "org.powermock:powermock-reflect:$powermockVersion"
 }
 
