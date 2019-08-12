@@ -15,8 +15,10 @@ bintray {
         desc = project.description
         licenses = ['MIT']
         websiteUrl = rootProject.ext.websiteUrl
+        issueTrackerUrl = rootProject.ext.issueTrackerUrl
         vcsUrl = rootProject.ext.vcsUrl
         publicDownloadNumbers = true
+        githubRepo = rootProject.ext.githubRepo
 
         version {
             name = project.version

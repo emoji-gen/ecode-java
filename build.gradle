@@ -1,12 +1,13 @@
 buildscript {
     ext {
         version = '0.1.0'
-        description = ''
+        description = 'The emoji code utilities for Java'
         group = 'ninja.emojigen'
-        websiteUrl = 'https://github.com/emoji-gen/ecode-java'
-        vcsUrl = 'https://github.com/emoji-gen/ecode-java.git'
-        issueTrackerUrl = 'https://github.com/emoji-gen/ecode-java/issues'
         userOrg = 'pinemz'
+        websiteUrl = 'https://github.com/emoji-gen/ecode-java'
+        issueTrackerUrl = 'https://github.com/emoji-gen/ecode-java/issues'
+        vcsUrl = 'https://github.com/emoji-gen/ecode-java.git'
+        githubRepo = 'emoji-gen/ecode-java'
 
         powermockVersion = '2.0.2'
     }
