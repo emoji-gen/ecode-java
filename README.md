@@ -62,5 +62,20 @@ class Main {
 }
 ```
 
+## Development
+### Test
+
+```bash
+$ ./gradlew clean test
+```
+
+### Upload Bintray
+
+```bash
+$ export BINTRAY_USER=username
+$ export BINTRAY_KEY=apiKey
+$ ./gradlew clean assemble bintrayUpload
+```
+
 ## License
 MIT &copy; [Emoji Generator](https://emoji-gen.ninja)
