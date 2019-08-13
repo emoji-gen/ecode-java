@@ -20,7 +20,7 @@ repositories {
 }
 
 depepdencies {
-    implementation 'ninja.emojigen:ecode:0.1.0'
+    implementation 'ninja.emojigen:ecode:0.1.1'
 }
 ```
 
