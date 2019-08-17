@@ -78,5 +78,9 @@ $ export BINTRAY_KEY=apiKey
 $ ./gradlew clean assemble bintrayUpload
 ```
 
+## Related projects
+
+- [ecode-js](https://github.com/emoji-gen/ecode-js)
+
 ## License
 MIT &copy; [Emoji Generator](https://emoji-gen.ninja)
