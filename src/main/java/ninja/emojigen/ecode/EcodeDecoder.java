@@ -17,11 +17,7 @@ public class EcodeDecoder {
                 String.format("Illegal byte length %d.", bytes.length));
         }
 
-        final int version = (bytes[0] >>> 4 & 0x0f) + 1;
-        if (version != 1) {
-            throw new IllegalArgumentException(
-                String.format("Illegal ecode version %d.", version));
-        }
+        validateV1Version(bytes[0]);
 
         final int localeId = bytes[0] & 0x0f;
         final EcodeLocale locale = EcodeLocale.fromId(localeId);
@@ -78,5 +74,13 @@ public class EcodeDecoder {
             .backgroundColor(backgroundColor)
             .text(text)
             .build();
+    }
+
+    void validateV1Version(byte byte0) {
+        final int version = (byte0 >>> 4 & 0x0f) + 1;
+        if (version != 1) {
+            throw new IllegalArgumentException(
+                String.format("Illegal ecode version %d.", version));
+        }
     }
 }

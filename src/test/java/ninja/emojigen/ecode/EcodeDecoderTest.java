@@ -41,18 +41,6 @@ public class EcodeDecoderTest {
     }
 
     @Test
-    public void decodeV1Test_illegalVersion() {
-        expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage("Illegal ecode version 16.");
-
-        final byte[] bytes = new byte[13];
-        bytes[0] |= 0xf0;
-
-        final String ecode = Base64.encodeBase64URLSafeString(bytes);
-        ECODE_DECODER.decodeV1(ecode);
-    }
-
-    @Test
     public void decodeV1Test_illegalLocale() {
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("Illegal locale ID 15.");
@@ -98,5 +86,18 @@ public class EcodeDecoderTest {
 
         final String ecode = Base64.encodeBase64URLSafeString(bytes);
         ECODE_DECODER.decodeV1(ecode);
+    }
+
+    @Test
+    public void validateV1VersionTest() {
+        ECODE_DECODER.validateV1Version((byte) 0b0000_0000);
+    }
+
+    @Test
+    public void validateV1VersionTest_illegalVersion() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("Illegal ecode version 16.");
+
+        ECODE_DECODER.validateV1Version((byte) 0b1111_0000);
     }
 }
