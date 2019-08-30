@@ -4,7 +4,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/4d68b7f773c84b4f04a9/maintainability)](https://codeclimate.com/github/emoji-gen/ecode-java/maintainability)
 [![Download](https://api.bintray.com/packages/pinemz/maven/ecode/images/download.svg)](https://bintray.com/pinemz/maven/ecode)
 
-> :musical_score: The emoji code utilities for Java
+:musical_score: The emoji code utilities for Java
 
 ## Requirements
 - Java 1.8 or later
