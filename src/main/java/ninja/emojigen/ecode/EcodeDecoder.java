@@ -8,6 +8,7 @@ import java.util.EnumSet;
 import java.util.Set;
 
 public class EcodeDecoder {
+    @SuppressWarnings("WeakerAccess")
     protected static final int V1_HEADER_LENGTH = 12;
 
     public EcodeV1 decodeV1(String ecode) {
@@ -19,12 +20,7 @@ public class EcodeDecoder {
 
         validateV1Version(bytes[0]);
 
-        final int localeId = bytes[0] & 0x0f;
-        final EcodeLocale locale = EcodeLocale.fromId(localeId);
-        if (locale == null) {
-            throw new IllegalArgumentException(
-                String.format("Illegal locale ID %d.", localeId));
-        }
+        final EcodeLocale locale = decodeV1Locale(bytes[0]);
 
         final Set<EcodeFlag> flags = EnumSet.noneOf(EcodeFlag.class);
         for (final EcodeFlag flag : EcodeFlag.values()) {
@@ -82,5 +78,16 @@ public class EcodeDecoder {
             throw new IllegalArgumentException(
                 String.format("Illegal ecode version %d.", version));
         }
+    }
+
+    EcodeLocale decodeV1Locale(byte byte0) {
+        final int localeId = byte0 & 0x0f;
+        final EcodeLocale locale = EcodeLocale.fromId(localeId);
+        if (locale == null) {
+            throw new IllegalArgumentException(
+                String.format("Illegal locale ID %d.", localeId));
+        }
+
+        return locale;
     }
 }
