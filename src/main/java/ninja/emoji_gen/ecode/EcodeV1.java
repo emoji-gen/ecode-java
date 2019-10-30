@@ -1,4 +1,4 @@
-package ninja.emojigen.ecode;
+package ninja.emoji_gen.ecode;
 
 import java.util.Collections;
 import java.util.Objects;

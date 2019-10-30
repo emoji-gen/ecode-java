@@ -1,4 +1,4 @@
-package ninja.emojigen.ecode;
+package ninja.emoji_gen.ecode;
 
 import org.junit.Rule;
 import org.junit.Test;
