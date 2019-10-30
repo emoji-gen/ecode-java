@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class EcodeV1Builder {
-    private EcodeLocale locale = EcodeLocale.JP;
+    private EcodeLocale locale = EcodeLocale.JA;
     private Set<EcodeFlag> flags = EnumSet.noneOf(EcodeFlag.class);
     private EcodeAlign align = EcodeAlign.LEFT;
     private EcodeSize size = EcodeSize.MDPI;

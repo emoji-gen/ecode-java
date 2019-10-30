@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum EcodeLocale {
-    JP(0),
-    KR(1),
+    JA(0),
+    KO(1),
     ZH_HANT(2),
     ZH_HANS(3),
     EN(4),
