@@ -2,7 +2,7 @@ buildscript {
     ext {
         version = '0.1.1'
         description = 'The emoji code utilities for Java'
-        group = 'ninja.emojigen'
+        group = 'ninja.emoji_gen'
         userOrg = 'pinemz'
         websiteUrl = 'https://github.com/emoji-gen/ecode-java'
         issueTrackerUrl = 'https://github.com/emoji-gen/ecode-java/issues'
