@@ -82,9 +82,10 @@ $ ./gradlew clean assemble bintrayUpload
 ## Ported projects
 
 |Name|Language|
-|----|--------|
+|---|---|
 |[ecode-js](https://github.com/emoji-gen/ecode-js)|JavaScript|
 |[ecode-java](https://github.com/emoji-gen/ecode-java)|Java|
+|[ecode-py](https://github.com/emoji-gen/ecode-py)|Python|
 
 ## License
 MIT &copy; [Emoji Generator](https://emoji-gen.ninja)
