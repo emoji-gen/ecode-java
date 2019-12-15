@@ -29,7 +29,7 @@ depepdencies {
 ### Encoding
 
 ```java
-import ninja.emojigen.ecode.*;
+import ninja.emoji_gen.ecode.*;
 
 class Main {
     public static void main(String ...args) {
@@ -54,7 +54,7 @@ class Main {
 ## Decoding
 
 ```java
-import ninja.emojigen.ecode.*;
+import ninja.emoji_gen.ecode.*;
 
 class Main {
     public static void main(String ...args) {
