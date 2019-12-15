@@ -21,7 +21,7 @@ repositories {
 }
 
 depepdencies {
-    implementation 'ninja.emojigen:ecode:0.1.1'
+    implementation 'ninja.emoji_gen:ecode:0.1.2'
 }
 ```
 
