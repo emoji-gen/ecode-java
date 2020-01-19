@@ -3,6 +3,7 @@ package ninja.emoji_gen.ecode;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class EcodeLocaleTest {
     @Test
@@ -65,5 +66,16 @@ public class EcodeLocaleTest {
         assertEquals(EcodeLocale.EN, EcodeLocale.fromCode("en"));
         assertEquals(EcodeLocale.EN, EcodeLocale.fromCode("En"));
         assertEquals(EcodeLocale.EN, EcodeLocale.fromCode("EN"));
+    }
+
+    @Test
+    public void fromCodeTest_unknown() {
+        assertNull(EcodeLocale.fromCode("unknown"));
+    }
+
+    @Test(expected = NullPointerException.class)
+    @SuppressWarnings("ConstantConditions")
+    public void fromCodeTest_null() {
+        EcodeLocale.fromCode(null);
     }
 }
