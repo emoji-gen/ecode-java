@@ -1,7 +1,5 @@
 package ninja.emoji_gen.ecode;
 
-import moe.pine.nonnull.Nullable;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,27 +41,19 @@ public enum EcodeLocale {
         }
     }
 
-    @Nullable
     public static EcodeLocale fromId(int id) {
+        if (!ID_TO_LOCALE.containsKey(id)) {
+            throw new IllegalArgumentException(String.format("Illegal locale ID %d.", id));
+        }
         return ID_TO_LOCALE.get(id);
     }
 
-    private static Map<String, EcodeLocale> CODE_TO_LOCALE;
-
-    static {
-        CODE_TO_LOCALE = new HashMap<>();
-        for (EcodeLocale locale : EcodeLocale.values()) {
-            CODE_TO_LOCALE.put(locale.getCode().toUpperCase(), locale);
-        }
-    }
-
-    @Nullable
     public static EcodeLocale fromCode(String code) {
         String upperCode = code.toUpperCase();
         if ("ZH".equals(upperCode)) {
             return EcodeLocale.ZH_HANS;
         }
 
-        return CODE_TO_LOCALE.get(upperCode.replace('_', '-'));
+        return EcodeLocale.valueOf(upperCode.replace('-', '_'));
     }
 }

@@ -88,19 +88,4 @@ public class EcodeDecoderTest {
 
         ECODE_DECODER.validateV1Version((byte) 0b1111_0000);
     }
-
-    @Test
-    public void decodeV1LocaleTest() {
-        for (final EcodeLocale locale : EcodeLocale.values()) {
-            assertEquals(locale, ECODE_DECODER.decodeV1Locale((byte) locale.getId()));
-        }
-    }
-
-    @Test
-    public void decodeV1LocaleTest_illegalLocale() {
-        expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage("Illegal locale ID 15.");
-
-        ECODE_DECODER.decodeV1Locale((byte) 0b0000_1111);
-    }
 }
