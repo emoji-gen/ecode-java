@@ -68,7 +68,6 @@ public enum EcodeLocale {
         if ("ZH".equals(upperCode)) {
             return EcodeLocale.ZH_HANS;
         }
-
         return EcodeLocale.valueOf(upperCode.replace('-', '_'));
     }
 }
