@@ -48,6 +48,13 @@ public enum EcodeLocale {
         return ID_TO_LOCALE.get(id);
     }
 
+    /**
+     * Returns {@code EcodeLocale} object associated with {@code code}
+     *
+     * @param code Locale code
+     * @return {@code EcodeLocale} object associated with {@code code}
+     * @throws IllegalArgumentException if {@code code} isn't supported value.
+     */
     public static EcodeLocale fromCode(String code) {
         String upperCode = code.toUpperCase();
         if ("ZH".equals(upperCode)) {
