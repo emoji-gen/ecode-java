@@ -16,4 +16,18 @@ public class EcodeAlignTest {
     public void fromIdTest_illegalId() {
         EcodeAlign.fromId(10000);
     }
+
+    @Test
+    public void getIdTest() {
+        assertEquals(0, EcodeAlign.LEFT.getId());
+        assertEquals(1, EcodeAlign.CENTER.getId());
+        assertEquals(2, EcodeAlign.RIGHT.getId());
+    }
+
+    @Test
+    public void getCodeTest() {
+        assertEquals("left", EcodeAlign.LEFT.getCode());
+        assertEquals("center", EcodeAlign.CENTER.getCode());
+        assertEquals("right", EcodeAlign.RIGHT.getCode());
+    }
 }
