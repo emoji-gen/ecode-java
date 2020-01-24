@@ -17,17 +17,17 @@ public class EcodeDecoderTest {
 
     @Test
     public void decodeV1Test() {
-        final EcodeV1 ecodeV1 = ECODE_DECODER.decodeV1("BA0hzxI0VniavN7wYWIKYw");
-        assertEquals(1, ecodeV1.getVersion());
-        assertEquals(EcodeLocale.EN, ecodeV1.getLocale());
-        assertEquals(EnumSet.of(EcodeFlag.SIZE_FIXED, EcodeFlag.STRETCH), ecodeV1.getFlags());
-        assertEquals(EcodeAlign.CENTER, ecodeV1.getAlign());
-        assertEquals(EcodeSize.XHDPI, ecodeV1.getSize());
-        assertEquals(EcodeFormat.WEBP, ecodeV1.getFormat());
-        assertEquals(0b1100_1111, ecodeV1.getFontId());
-        assertEquals(0x12345678, ecodeV1.getForegroundColor());
-        assertEquals(0x9abcdef0, ecodeV1.getBackgroundColor());
-        assertEquals("ab\nc", ecodeV1.getText());
+        final Ecode ecode = ECODE_DECODER.decode("BA0hzxI0VniavN7wYWIKYw");
+        assertEquals(1, ecode.getVersion());
+        assertEquals(EcodeLocale.EN, ecode.getLocale());
+        assertEquals(EnumSet.of(EcodeFlag.SIZE_FIXED, EcodeFlag.STRETCH), ecode.getFlags());
+        assertEquals(EcodeAlign.CENTER, ecode.getAlign());
+        assertEquals(EcodeSize.XHDPI, ecode.getSize());
+        assertEquals(EcodeFormat.WEBP, ecode.getFormat());
+        assertEquals(0b1100_1111, ecode.getFontId());
+        assertEquals(0x12345678, ecode.getForegroundColor());
+        assertEquals(0x9abcdef0, ecode.getBackgroundColor());
+        assertEquals("ab\nc", ecode.getText());
     }
 
     @Test
@@ -37,7 +37,7 @@ public class EcodeDecoderTest {
 
         final byte[] bytes = new byte[12];
         final String ecode = Base64.encodeBase64URLSafeString(bytes);
-        ECODE_DECODER.decodeV1(ecode);
+        ECODE_DECODER.decode(ecode);
     }
 
     @Test
@@ -49,7 +49,7 @@ public class EcodeDecoderTest {
         bytes[1] |= 0x03;
 
         final String ecode = Base64.encodeBase64URLSafeString(bytes);
-        ECODE_DECODER.decodeV1(ecode);
+        ECODE_DECODER.decode(ecode);
     }
 
     @Test
@@ -61,7 +61,7 @@ public class EcodeDecoderTest {
         bytes[2] |= 0xf0;
 
         final String ecode = Base64.encodeBase64URLSafeString(bytes);
-        ECODE_DECODER.decodeV1(ecode);
+        ECODE_DECODER.decode(ecode);
     }
 
     @Test
@@ -73,7 +73,7 @@ public class EcodeDecoderTest {
         bytes[2] |= 0x0f;
 
         final String ecode = Base64.encodeBase64URLSafeString(bytes);
-        ECODE_DECODER.decodeV1(ecode);
+        ECODE_DECODER.decode(ecode);
     }
 
     @Test

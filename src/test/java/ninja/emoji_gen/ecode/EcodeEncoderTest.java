@@ -20,7 +20,7 @@ public class EcodeEncoderTest {
 
     @Test
     public void encodeV1Test() {
-        final EcodeV1 ecode = new EcodeV1Builder()
+        final Ecode ecode = new EcodeBuilder()
             .locale(EcodeLocale.EN)
             .flags(EnumSet.of(EcodeFlag.SIZE_FIXED, EcodeFlag.STRETCH))
             .align(EcodeAlign.CENTER)
@@ -32,7 +32,7 @@ public class EcodeEncoderTest {
             .text("ab\nc")
             .build();
 
-        final String code = ECODE_ENCODER.encodeV1(ecode);
+        final String code = ECODE_ENCODER.encode(ecode);
         System.out.println("code=" + code); // "BA0hzxI0VniavN7wYWIKYw"
 
         final byte[] actual = Base64.decodeBase64(code);
@@ -64,12 +64,12 @@ public class EcodeEncoderTest {
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("empty string is not allowed");
 
-        final EcodeV1 ecode = new EcodeV1Builder()
+        final Ecode ecode = new EcodeBuilder()
             .text("ab\nc")
             .build();
         Whitebox.setInternalState(ecode, "text", "");
 
-        ECODE_ENCODER.encodeV1(ecode);
+        ECODE_ENCODER.encode(ecode);
     }
 
     @Test

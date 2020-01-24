@@ -11,7 +11,7 @@ public class EcodeDecoder {
     @SuppressWarnings("WeakerAccess")
     protected static final int V1_HEADER_LENGTH = 12;
 
-    public EcodeV1 decodeV1(String ecode) {
+    public Ecode decode(String ecode) {
         final byte[] bytes = Base64.decodeBase64(ecode);
         if (bytes.length <= V1_HEADER_LENGTH) {
             throw new IllegalArgumentException(
@@ -54,7 +54,7 @@ public class EcodeDecoder {
         // `StandardCharsets` can be used Android 4.4 (API level 19) or later.
         final String text = new String(bytes, V1_HEADER_LENGTH, bytes.length - V1_HEADER_LENGTH, StandardCharsets.UTF_8);
 
-        return new EcodeV1Builder()
+        return new EcodeBuilder()
             .locale(locale)
             .flags(flags)
             .align(align)
