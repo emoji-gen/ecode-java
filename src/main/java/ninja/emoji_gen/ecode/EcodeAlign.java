@@ -19,6 +19,11 @@ public enum EcodeAlign {
         return id;
     }
 
+    /**
+     * Returns align code, such as {@code "left"}.
+     *
+     * @return Align code
+     */
     public String getCode() {
         return name().toLowerCase();
     }
