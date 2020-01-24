@@ -11,4 +11,9 @@ public class EcodeAlignTest {
         assertEquals(EcodeAlign.CENTER, EcodeAlign.fromId(EcodeAlign.CENTER.getId()));
         assertEquals(EcodeAlign.RIGHT, EcodeAlign.fromId(EcodeAlign.RIGHT.getId()));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void fromIdTest_illegalId() {
+        EcodeAlign.fromId(10000);
+    }
 }

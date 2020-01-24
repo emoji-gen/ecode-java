@@ -29,12 +29,7 @@ public class EcodeDecoder {
             }
         }
 
-        final int alignId = bytes[1] & 0x03;
-        final EcodeAlign align = EcodeAlign.fromId(alignId);
-        if (align == null) {
-            throw new IllegalArgumentException(
-                String.format("Illegal align ID %d.", alignId));
-        }
+        final EcodeAlign align = EcodeAlign.fromId(bytes[1] & 0x03);
 
         final int sizeId = bytes[2] >>> 4 & 0x0f;
         final EcodeSize size = EcodeSize.fromId(sizeId);
