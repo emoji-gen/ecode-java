@@ -41,6 +41,13 @@ public enum EcodeLocale {
         }
     }
 
+    /**
+     * Returns {@code EcodeLocale} object associated with {@code id}
+     *
+     * @param id Locale ID
+     * @return {@code EcodeLocale} object associated with {@code id}
+     * @throws IllegalArgumentException if {@code id} isn't supported value.
+     */
     public static EcodeLocale fromId(int id) {
         if (!ID_TO_LOCALE.containsKey(id)) {
             throw new IllegalArgumentException(String.format("Illegal locale ID %d.", id));
@@ -53,6 +60,7 @@ public enum EcodeLocale {
      *
      * @param code Locale code
      * @return {@code EcodeLocale} object associated with {@code code}
+     * @throws NullPointerException     if {@code code} is {@code null}.
      * @throws IllegalArgumentException if {@code code} isn't supported value.
      */
     public static EcodeLocale fromCode(String code) {
