@@ -13,7 +13,7 @@
 The library also works on Android 4.4 (API level 19) or later.
 
 ## Getting started
-The library is published on jcenter.
+The library is published on jcenter. You can check the latest ecode version at [releases page](https://github.com/emoji-gen/ecode-java/releases).
 
 ```gradle
 repositories {
@@ -21,7 +21,7 @@ repositories {
 }
 
 depepdencies {
-    implementation 'ninja.emoji_gen:ecode:0.1.2'
+    implementation "ninja.emoji_gen:ecode:$ecode_version"
 }
 ```
 
