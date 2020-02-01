@@ -34,6 +34,13 @@ public enum EcodeSize {
         }
     }
 
+    /**
+     * Returns {@code EcodeSize} object associated with {@code id}
+     *
+     * @param id Size ID
+     * @return {@code EcodeSize} object associated with {@code id}
+     * @throws IllegalArgumentException if {@code id} isn't supported value.
+     */
     public static EcodeSize fromId(int id) {
         if (!ID_TO_SIZE.containsKey(id)) {
             throw new IllegalArgumentException(String.format("Illegal size ID %d.", id));
