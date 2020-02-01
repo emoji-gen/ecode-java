@@ -17,7 +17,7 @@ public class EcodeDecoderTest {
 
     @Test
     public void decodeTest() {
-        final Ecode ecode = ECODE_DECODER.decode("BA0hzxI0VniavN7wYWIKYw");
+        Ecode ecode = ECODE_DECODER.decode("BA0hzxI0VniavN7wYWIKYw");
         assertEquals(1, ecode.getVersion());
         assertEquals(EcodeLocale.EN, ecode.getLocale());
         assertEquals(EnumSet.of(EcodeFlag.SIZE_FIXED, EcodeFlag.STRETCH), ecode.getFlags());
@@ -35,8 +35,8 @@ public class EcodeDecoderTest {
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("Illegal byte length 12.");
 
-        final byte[] bytes = new byte[12];
-        final String ecode = Base64.encodeBase64URLSafeString(bytes);
+        byte[] bytes = new byte[12];
+        String ecode = Base64.encodeBase64URLSafeString(bytes);
         ECODE_DECODER.decode(ecode);
     }
 
@@ -45,10 +45,10 @@ public class EcodeDecoderTest {
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("Illegal align ID 3.");
 
-        final byte[] bytes = new byte[13];
+        byte[] bytes = new byte[13];
         bytes[1] |= 0x03;
 
-        final String ecode = Base64.encodeBase64URLSafeString(bytes);
+        String ecode = Base64.encodeBase64URLSafeString(bytes);
         ECODE_DECODER.decode(ecode);
     }
 
@@ -57,10 +57,10 @@ public class EcodeDecoderTest {
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("Illegal size ID 15.");
 
-        final byte[] bytes = new byte[13];
+        byte[] bytes = new byte[13];
         bytes[2] |= 0xf0;
 
-        final String ecode = Base64.encodeBase64URLSafeString(bytes);
+        String ecode = Base64.encodeBase64URLSafeString(bytes);
         ECODE_DECODER.decode(ecode);
     }
 
@@ -69,10 +69,10 @@ public class EcodeDecoderTest {
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("Illegal format ID 15.");
 
-        final byte[] bytes = new byte[13];
+        byte[] bytes = new byte[13];
         bytes[2] |= 0x0f;
 
-        final String ecode = Base64.encodeBase64URLSafeString(bytes);
+        String ecode = Base64.encodeBase64URLSafeString(bytes);
         ECODE_DECODER.decode(ecode);
     }
 
