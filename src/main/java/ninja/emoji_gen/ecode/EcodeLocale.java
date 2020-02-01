@@ -1,6 +1,7 @@
 package ninja.emoji_gen.ecode;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public enum EcodeLocale {
@@ -28,7 +29,7 @@ public enum EcodeLocale {
             case ZH_HANS:
                 return "zh-Hans";
             default:
-                return name().toLowerCase();
+                return name().toLowerCase(Locale.US);
         }
     }
 
