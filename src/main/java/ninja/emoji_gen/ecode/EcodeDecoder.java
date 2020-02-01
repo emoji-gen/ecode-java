@@ -7,10 +7,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.EnumSet;
 import java.util.Set;
 
-public class EcodeDecoder {
-    @SuppressWarnings("WeakerAccess")
-    protected static final int V1_HEADER_LENGTH = 12;
+import static ninja.emoji_gen.ecode.EcodeEncoder.V1_HEADER_LENGTH;
 
+public class EcodeDecoder {
     public Ecode decode(String ecode) {
         byte[] bytes = Base64.decodeBase64(ecode);
         if (bytes.length <= V1_HEADER_LENGTH) {

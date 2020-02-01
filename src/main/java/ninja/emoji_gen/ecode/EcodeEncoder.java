@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Set;
 
 public class EcodeEncoder {
-    protected static final int V1_HEADER_LENGTH = 12;
+    static final int V1_HEADER_LENGTH = 12;
 
     public String encode(final Ecode ecode) {
         final byte[] encodedText = ecode.getText().getBytes(StandardCharsets.UTF_8);
