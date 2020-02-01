@@ -24,11 +24,23 @@ public enum EcodeFormat {
      * @return {@code EcodeFormat} object associated with {@code id}
      * @throws IllegalArgumentException if {@code id} isn't supported value.
      */
-    public static EcodeFormat fromId(final int id) {
+    public static EcodeFormat fromId(int id) {
         if (!ID_TO_FORMAT.containsKey(id)) {
             throw new IllegalArgumentException(String.format("Illegal format ID %d.", id));
         }
         return ID_TO_FORMAT.get(id);
+    }
+
+    /**
+     * Returns {@code EcodeFormat} object associated with {@code code}
+     *
+     * @param code Format code
+     * @return {@code EcodeFormat} object associated with {@code code}
+     * @throws NullPointerException     if {@code code} is {@code null}.
+     * @throws IllegalArgumentException if {@code code} isn't supported value.
+     */
+    public static EcodeFormat fromCode(String code) {
+        return valueOf(code.toUpperCase());
     }
 
     EcodeFormat(final int id) {

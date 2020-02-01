@@ -25,6 +25,13 @@ public class EcodeFormatTest {
     }
 
     @Test
+    public void fromCodeTest_png() {
+        assertEquals(EcodeFormat.PNG, EcodeFormat.fromCode("png"));
+        assertEquals(EcodeFormat.PNG, EcodeFormat.fromCode("Png"));
+        assertEquals(EcodeFormat.PNG, EcodeFormat.fromCode("PNG"));
+    }
+
+    @Test
     public void getIdTest() {
         assertEquals(0, EcodeFormat.PNG.getId());
         assertEquals(1, EcodeFormat.WEBP.getId());
