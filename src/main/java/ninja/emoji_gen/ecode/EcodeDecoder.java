@@ -30,13 +30,7 @@ public class EcodeDecoder {
         }
 
         final EcodeAlign align = EcodeAlign.fromId(bytes[1] & 0x03);
-
-        final int sizeId = bytes[2] >>> 4 & 0x0f;
-        final EcodeSize size = EcodeSize.fromId(sizeId);
-        if (size == null) {
-            throw new IllegalArgumentException(
-                String.format("Illegal size ID %d.", sizeId));
-        }
+        final EcodeSize size = EcodeSize.fromId(bytes[2] >>> 4 & 0x0f);
 
         final int formatId = bytes[2] & 0x0f;
         final EcodeFormat format = EcodeFormat.fromId(formatId);

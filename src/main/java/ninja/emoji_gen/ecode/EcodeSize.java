@@ -12,7 +12,7 @@ public enum EcodeSize {
     XXHDPI(3),
     ;
 
-    EcodeSize(final int id) {
+    EcodeSize(int id) {
         this.id = id;
     }
 
@@ -31,9 +31,10 @@ public enum EcodeSize {
         }
     }
 
-    @Nullable
-    public static EcodeSize fromId(final int id) {
+    public static EcodeSize fromId(int id) {
+        if (!ID_TO_SIZE.containsKey(id)) {
+            throw new IllegalArgumentException(String.format("Illegal size ID %d.", id));
+        }
         return ID_TO_SIZE.get(id);
     }
-
 }
