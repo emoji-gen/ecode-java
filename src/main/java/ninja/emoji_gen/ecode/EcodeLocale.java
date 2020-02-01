@@ -66,8 +66,8 @@ public enum EcodeLocale {
     public static EcodeLocale fromCode(String code) {
         String upperCode = code.toUpperCase();
         if ("ZH".equals(upperCode)) {
-            return EcodeLocale.ZH_HANS;
+            return ZH_HANS;
         }
-        return EcodeLocale.valueOf(upperCode.replace('-', '_'));
+        return valueOf(upperCode.replace('-', '_'));
     }
 }
