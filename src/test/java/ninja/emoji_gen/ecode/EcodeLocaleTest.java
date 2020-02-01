@@ -1,18 +1,14 @@
 package ninja.emoji_gen.ecode;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
 public class EcodeLocaleTest {
-    @Test
-    public void getIdTest() {
-        assertEquals(0, EcodeLocale.JA.getId());
-        assertEquals(1, EcodeLocale.KO.getId());
-        assertEquals(2, EcodeLocale.ZH_HANT.getId());
-        assertEquals(3, EcodeLocale.ZH_HANS.getId());
-        assertEquals(4, EcodeLocale.EN.getId());
-    }
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void getCodeTest() {
@@ -76,5 +72,31 @@ public class EcodeLocaleTest {
     @SuppressWarnings("ConstantConditions")
     public void fromCodeTest_null() {
         EcodeLocale.fromCode(null);
+    }
+
+    @Test
+    public void fromIdTest() {
+        assertEquals(EcodeLocale.JA, EcodeLocale.fromId(0));
+        assertEquals(EcodeLocale.KO, EcodeLocale.fromId(1));
+        assertEquals(EcodeLocale.ZH_HANT, EcodeLocale.fromId(2));
+        assertEquals(EcodeLocale.ZH_HANS, EcodeLocale.fromId(3));
+        assertEquals(EcodeLocale.EN, EcodeLocale.fromId(4));
+    }
+
+    @Test
+    public void fromIdTest_illegal() {
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("Illegal locale ID 100");
+
+        EcodeLocale.fromId(100);
+    }
+
+    @Test
+    public void getIdTest() {
+        assertEquals(0, EcodeLocale.JA.getId());
+        assertEquals(1, EcodeLocale.KO.getId());
+        assertEquals(2, EcodeLocale.ZH_HANT.getId());
+        assertEquals(3, EcodeLocale.ZH_HANS.getId());
+        assertEquals(4, EcodeLocale.EN.getId());
     }
 }
