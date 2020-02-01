@@ -36,4 +36,10 @@ public class EcodeFormatTest {
         assertEquals(0, EcodeFormat.PNG.getId());
         assertEquals(1, EcodeFormat.WEBP.getId());
     }
+
+    @Test
+    public void getCodeTest() {
+        assertEquals("png", EcodeFormat.PNG.getCode());
+        assertEquals("webp", EcodeFormat.WEBP.getCode());
+    }
 }

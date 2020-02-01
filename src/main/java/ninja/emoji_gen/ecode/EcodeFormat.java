@@ -1,6 +1,7 @@
 package ninja.emoji_gen.ecode;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public enum EcodeFormat {
@@ -51,5 +52,9 @@ public enum EcodeFormat {
 
     public int getId() {
         return id;
+    }
+
+    public String getCode() {
+        return name().toLowerCase(Locale.US);
     }
 }
