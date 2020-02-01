@@ -31,13 +31,7 @@ public class EcodeDecoder {
 
         final EcodeAlign align = EcodeAlign.fromId(bytes[1] & 0x03);
         final EcodeSize size = EcodeSize.fromId(bytes[2] >>> 4 & 0x0f);
-
-        final int formatId = bytes[2] & 0x0f;
-        final EcodeFormat format = EcodeFormat.fromId(formatId);
-        if (format == null) {
-            throw new IllegalArgumentException(
-                String.format("Illegal format ID %d.", formatId));
-        }
+        final EcodeFormat format = EcodeFormat.fromId(bytes[2] & 0x0f);
 
         final int fontId = bytes[3] & 0xff;
         final int foregroundColor =
